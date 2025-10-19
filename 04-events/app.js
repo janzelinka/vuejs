@@ -14,6 +14,9 @@ const app = Vue.createApp({
     },
     saveInput(event, str) {
       this.name = event.target.value + str;
+    },
+    handleSubmit() {
+      console.log('hello world')
     }
   }
 });

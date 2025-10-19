@@ -21,8 +21,13 @@
       <button @click="add(5)">Add</button>
       <button @click="remove(5)">Remove</button>
       <p>Result: {{ counter }}</p>
-      <input type="text" @input="saveInput($event, 'abc')" />
+      <input type="text" @input="saveInput($event, 'abc')" @keyup.enter="name = ''" />
       <p>{{ name }}</p>
+
+      <form @submit.prevent="handleSubmit">
+        <input type="text" />
+        <button >Sign up</button>
+      </form>
     </section>
   </body>
 </html>
