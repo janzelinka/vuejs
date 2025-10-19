@@ -3,6 +3,11 @@ const app = Vue.createApp({
         return {
             boxSelected: false
         }
+     },
+     computed: {
+        boxStyle() {
+            return { active: this.boxSelected }
+        }
      }
 });
 
