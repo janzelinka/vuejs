@@ -6,7 +6,7 @@ const app = Vue.createApp({
     },
     computed: {
         message() {
-            return this.number < 37 ? "Not there yet." : "Too much."
+            return this.number < 37 ? "Not there yet." : this.number == 37 ? "37" : "Too much."
         }
     },
     methods: {
