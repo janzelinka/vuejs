@@ -2,15 +2,21 @@ const app = Vue.createApp({
   data() {
     return {
       counter: 0,
-      name: ''
+      name: '',
+      fullname: ''
     };
   },
-  computed: {
-    fullName() {
-      if (this.name === '')
-        return '';
-      return this.name + ' ' + "zeLo"
-    },
+  // computed: {
+  //   fullName() {
+  //     if (this.name === '')
+  //       return '';
+  //     return this.name + ' ' + "zeLo"
+  //   },
+  // },
+  watch: {
+    name(value, oldValue) {
+      this.fullname = value == "" ? "" : value + " Zelo";
+    }
   },
   methods: {
     setName(event) {
