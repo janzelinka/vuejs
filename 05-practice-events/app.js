@@ -1,7 +1,8 @@
 const app = Vue.createApp({
     data() {
         return {
-            input: ''
+            input: '',
+            enteredValue: ''
         }
     },
     methods: {
@@ -10,6 +11,9 @@ const app = Vue.createApp({
         },
         handleInput(e) {
             this.input = e.target.value;
+        },
+        handleEnter(e) {
+            this.enteredValue = e.target.value;
         }
     }
 });
