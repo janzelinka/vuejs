@@ -11,6 +11,9 @@ const app = Vue.createApp({
     },
     remove(num) {
       this.counter-=num;
+    },
+    saveInput(event, str) {
+      this.name = event.target.value + str;
     }
   }
 });
