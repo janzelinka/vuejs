@@ -18,9 +18,11 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <button @click="handleClick($event)">Add</button>
-      <button @click="handleRemove($event)">Remove</button>
+      <button @click="add(5)">Add</button>
+      <button @click="remove(5)">Remove</button>
       <p>Result: {{ counter }}</p>
+      <input type="text" @input="name=$event.target.value" />
+      <p>{{ name }}</p>
     </section>
   </body>
 </html>

@@ -2,14 +2,15 @@ const app = Vue.createApp({
   data() {
     return {
       counter: 0,
+      name: ''
     };
   },
   methods: {
-    handleClick() {
-      this.counter++;
+    add(num) {
+      this.counter+=num;
     },
-    handleRemove() {
-      this.counter--;
+    remove(num) {
+      this.counter-=num;
     }
   }
 });
