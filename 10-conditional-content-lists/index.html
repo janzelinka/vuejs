@@ -23,7 +23,7 @@
       <p v-if="goals.length == 0">
         No goals have been added yet - please start adding some!
       </p>
-      <ul v-if="goals.length > 0">
+      <ul v-else>
         <li v-for="(item, index) in goals" :key="index">{{item}}</li>
       </ul>
     </section>
