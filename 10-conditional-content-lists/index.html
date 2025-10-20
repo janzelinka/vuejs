@@ -23,6 +23,7 @@
       <p v-if="goals.length == 0">
         No goals have been added yet - please start adding some!
       </p>
+      <p v-show="goals.length == 0">Example of v-show</p>
       <ul v-else>
         <li v-for="(item, index) in goals" :key="index">{{item}}</li>
       </ul>
