@@ -18,14 +18,14 @@
     </header>
     <section id="user-goals">
       <h2>My course goals</h2>
-      <input type="text" v-bind="goal" />
+      <input type="text" v-model="goal" />
       <button @click="addGoal">Add Goal</button>
       <p v-if="goals.length == 0">
         No goals have been added yet - please start adding some!
       </p>
       <p v-show="goals.length == 0">Example of v-show</p>
       <ul v-else>
-        <li v-for="(item, index) in goals" :key="index">{{item}}</li>
+        <li v-for="goal in goals" :key="index">{{goal}}</li>
       </ul>
     </section>
   </body>
