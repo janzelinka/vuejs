@@ -43,6 +43,16 @@ const app = Vue.createApp({
       this.playerHealth -= attackValue;
       this.roundNumber = 0;
     },
+    healPlayer() {
+      this.roundNumber++;
+      const healValue = getRandomValue(8, 20);
+      if (this.playerHealth + healValue > 100) {
+        this.playerHealth = 100;
+      } else {
+        this.playerHealth += healValue;
+      }
+      this.attackPlayer();
+    },
   },
 });
 
