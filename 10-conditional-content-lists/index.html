@@ -25,7 +25,11 @@
       </p>
       <p v-show="goals.length == 0">Example of v-show</p>
       <ul v-else>
-        <li v-for="(goal, index) of goals" :key="index">
+        <li
+          v-for="(goal, index) of goals"
+          :key="index"
+          @click="removeItem(index)"
+        >
           {{goal}} -- {{ index }}
         </li>
       </ul>
