@@ -36,7 +36,7 @@
         <p v-if="winner === 'draw'">It's a draw!</p>
         <button @click="restartGame">Start new game</button>
       </section>
-      <section id="controls">
+      <section id="controls" v-else>
         <button @click="attackMonster">ATTACK</button>
         <button
           @click="specialAttackMonster"
@@ -49,7 +49,22 @@
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
-        <ul></ul>
+        <ul>
+          <li v-for="l of log">
+            <span
+              :class="{'log--player': l.who === 'player', 'log--monster': l.who === 'monster'}"
+              >{{ l.who === 'player' ? 'Player' : 'Monster'}}</span
+            >
+            <span v-if="l.what === 'heal'">
+              Heals himself for
+              <span class="log--heal">{{ l.value}}</span></span
+            >
+
+            <span v-if="l.what === 'attack'">
+              Attacks and deals <span class="log--damage"> {{ l.value }}</span>
+            </span>
+          </li>
+        </ul>
       </section>
     </div>
   </body>
