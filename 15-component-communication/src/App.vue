@@ -58,6 +58,7 @@ export default {
     },
     addNewFriend(friend) {
       console.log(friend);
+      friend.id = new Date().getTime();
       this.friends.push(friend);
     },
   },
