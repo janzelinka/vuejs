@@ -3,6 +3,13 @@
     <header>
       <h1>My Friends</h1>
     </header>
+    <div style="text-align: center">
+      <button @click="toggleAddNewFriend">Add New Friend</button>
+      <add-new-friend
+        v-if="isAddNewFriendVisible"
+        @add-new-friend="addNewFriend"
+      />
+    </div>
     <ul>
       <friend-contact
         v-for="friend in friends"
@@ -22,6 +29,7 @@
 export default {
   data() {
     return {
+      isAddNewFriendVisible: false,
       friends: [
         {
           id: "manuel",
@@ -44,6 +52,13 @@ export default {
     toggleFavoriteStatus(id) {
       const index = this.friends.findIndex((x) => x.id === id);
       this.friends[index].isFavorite = !this.friends[index].isFavorite;
+    },
+    toggleAddNewFriend() {
+      this.isAddNewFriendVisible = !this.isAddNewFriendVisible;
+    },
+    addNewFriend(friend) {
+      console.log(friend);
+      this.friends.push(friend);
     },
   },
 };
