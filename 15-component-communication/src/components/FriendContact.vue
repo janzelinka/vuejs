@@ -19,6 +19,23 @@
 </template>
 
 <script>
+// Available types
+// String
+
+// Number
+
+// Boolean
+
+// Array
+
+// Object
+
+// Date
+
+// Function
+
+// Symbol
+
 export default {
   props: {
     name: {
