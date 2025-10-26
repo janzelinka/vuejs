@@ -1,6 +1,10 @@
 <template>
   <section>
-    <header><slot name="header"></slot></header>
+    <header>
+      <slot name="header">
+        <h2>The default heading</h2>
+      </slot>
+    </header>
     <slot></slot>
   </section>
 </template>
