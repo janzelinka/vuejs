@@ -11,9 +11,12 @@
 <script>
 export default {
   provide() {
-    return { topics: this.topics, selectTopic: this.activateTopic };
+    return {
+      topics: this.topics,
+      selectTopic: this.activateTopic,
+      selectedTopicId: () => this.activeTopic?.id ?? '',
+    };
   },
-
   data() {
     return {
       topics: [
