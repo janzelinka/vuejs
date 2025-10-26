@@ -1,8 +1,8 @@
 <template>
   <section>
-    <header>
+    <header v-if="$slots.header">
       <slot name="header">
-        <h2>The default heading</h2>
+        <!-- <h2>The default heading</h2> -->
       </slot>
     </header>
     <slot></slot>
@@ -12,6 +12,13 @@
 <script>
 export default {
   slots: ["default", "header"],
+  mounted() {
+    console.log(
+      "BaseCard mounted - available slots:",
+      this.$slots.header,
+      this.$slots.default
+    );
+  },
 };
 </script>
 
