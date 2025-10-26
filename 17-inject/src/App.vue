@@ -4,17 +4,14 @@
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     ></active-element>
-    <knowledge-base
-      :topics="topics"
-      @select-topic="activateTopic"
-    ></knowledge-base>
+    <knowledge-base :topics="topics"></knowledge-base>
   </div>
 </template>
 
 <script>
 export default {
   provide() {
-    return { topics: this.topics };
+    return { topics: this.topics, selectTopic: this.activateTopic };
   },
 
   data() {
