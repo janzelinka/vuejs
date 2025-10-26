@@ -1,12 +1,13 @@
 <template>
   <section>
+    <header><slot name="header"></slot></header>
     <slot></slot>
   </section>
 </template>
 
 <script>
 export default {
-  slots: ["default"],
+  slots: ["default", "header"],
 };
 </script>
 
