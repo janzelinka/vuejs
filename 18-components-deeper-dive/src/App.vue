@@ -6,11 +6,13 @@
     <button @click="switchComponent('manage-goals')">Manage Goals</button>
     <!-- <active-goals v-if="selectedComponent === 'active-goals'"></active-goals>
     <manage-goals v-if="selectedComponent === 'manage-goals'"></manage-goals> -->
-    <component
-      :is="
-        selectedComponent === 'active-goals' ? 'active-goals' : 'manage-goals'
-      "
-    ></component>
+    <keep-alive>
+      <component
+        :is="
+          selectedComponent === 'active-goals' ? 'active-goals' : 'manage-goals'
+        "
+      ></component>
+    </keep-alive>
   </div>
 </template>
 
