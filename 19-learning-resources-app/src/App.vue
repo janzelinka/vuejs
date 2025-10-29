@@ -1,42 +1,17 @@
 <template>
   <the-header title="Learning Resources" />
-  <learning-resources-list :resources="resources" />
+  <the-resources />
 </template>
 
 <script>
 import TheHeader from './components/layouts/TheHeader.vue';
-import LearningResourcesList from './components/LearningResourcesList.vue';
+import TheResources from './components/TheResources.vue';
 
 export default {
   name: 'App',
   components: {
-    LearningResourcesList,
     TheHeader,
-  },
-  data() {
-    return {
-      resources: [
-        {
-          id: 1,
-          title: 'Vue.js Guide',
-          url: 'https://vuejs.org/guide/',
-          description: 'The official Vue.js guide.',
-        },
-        {
-          id: 2,
-          title: 'Vue Router',
-          url: 'https://router.vuejs.org/',
-          description: 'The official router for Vue.js.',
-        },
-        {
-          id: 3,
-          title: 'Vuex',
-          url: 'https://vuex.vuejs.org/',
-          description:
-            'State management pattern + library for Vue.js applications.',
-        },
-      ],
-    };
+    TheResources,
   },
 };
 </script>
