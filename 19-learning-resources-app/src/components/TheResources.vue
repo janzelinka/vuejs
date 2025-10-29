@@ -11,14 +11,15 @@
       >Add Resource</base-button
     >
   </base-card>
-
-  <component
-    :is="
-      selectedTab === 'stored-resources'
-        ? 'learning-resources-list'
-        : 'add-resource'
-    "
-  ></component>
+  <keep-alive>
+    <component
+      :is="
+        selectedTab === 'stored-resources'
+          ? 'learning-resources-list'
+          : 'add-resource'
+      "
+    ></component>
+  </keep-alive>
 </template>
 
 <script>
