@@ -26,10 +26,24 @@
       </div>
     </form>
   </base-card>
+  <teleport to="body">
+    <base-modal v-if="inputIsInvalid">
+      <template #header>Validation</template>
+      <template #default><p>Please fill in all fields.</p></template>
+      <template #actions>
+        <base-button @click="inputIsInvalid = false">Close</base-button>
+      </template>
+    </base-modal>
+  </teleport>
 </template>
 <script>
+import BaseModal from './ui/BaseModal.vue';
 export default {
+  components: { BaseModal },
   inject: ['addResource'],
+  data() {
+    return { inputIsInvalid: false };
+  },
   methods: {
     submitForm() {
       const title = this.$refs.title.value;
@@ -37,7 +51,7 @@ export default {
       const url = this.$refs.url.value;
 
       if (!title.trim() || !description.trim() || !url.trim()) {
-        alert('Please fill in all fields.');
+        this.inputIsInvalid = true;
         return;
       }
 
