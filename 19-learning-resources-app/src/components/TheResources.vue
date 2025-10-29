@@ -1,9 +1,15 @@
 <template>
   <base-card>
-    <base-button @click="selectTab('stored-resources')"
+    <base-button
+      @click="selectTab('stored-resources')"
+      :flat="selectedTab === 'stored-resources' ? true : false"
       >Stored Resources</base-button
     >
-    <base-button @click="selectTab('add-resources')">Add Resource</base-button>
+    <base-button
+      @click="selectTab('add-resources')"
+      :flat="selectedTab === 'add-resources' ? true : false"
+      >Add Resource</base-button
+    >
   </base-card>
 
   <component
