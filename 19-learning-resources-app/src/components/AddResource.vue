@@ -27,7 +27,7 @@
     </form>
   </base-card>
   <teleport to="body">
-    <base-modal v-if="inputIsInvalid">
+    <base-modal v-if="inputIsInvalid" @close="inputIsInvalid = false">
       <template #header>Validation</template>
       <template #default><p>Please fill in all fields.</p></template>
       <template #actions>
