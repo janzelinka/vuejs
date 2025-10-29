@@ -1,14 +1,17 @@
 <template>
+  <the-header title="Learning Resources" />
   <learning-resources-list :resources="resources" />
 </template>
 
 <script>
+import TheHeader from './components/layouts/TheHeader.vue';
 import LearningResourcesList from './components/LearningResourcesList.vue';
 
 export default {
   name: 'App',
   components: {
     LearningResourcesList,
+    TheHeader,
   },
   data() {
     return {
