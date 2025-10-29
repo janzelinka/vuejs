@@ -57,11 +57,21 @@ export default {
     };
   },
   provide() {
-    return { resources: this.resources };
+    return { resources: this.resources, addResource: this.addResource };
   },
   methods: {
     selectTab(tab) {
       this.selectedTab = tab;
+    },
+    addResource(title, description, url) {
+      const newResource = {
+        id: this.resources.length + 1,
+        title,
+        description,
+        url,
+      };
+      this.resources.unshift(newResource);
+      this.selectedTab = 'stored-resources';
     },
   },
 };
