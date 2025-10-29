@@ -3,7 +3,7 @@
     <base-card>
       <header>
         <h3>{{ resource.title }}</h3>
-        <button>Delete</button>
+        <base-button flat>Delete</base-button>
       </header>
 
       <p>{{ resource.description }}</p>
@@ -15,7 +15,9 @@
 </template>
 
 <script>
+import BaseButton from './ui/BaseButton.vue';
 export default {
+  components: { BaseButton },
   props: {
     resource: {
       type: {
