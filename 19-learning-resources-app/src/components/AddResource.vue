@@ -35,6 +35,12 @@ export default {
       const title = this.$refs.title.value;
       const description = this.$refs.description.value;
       const url = this.$refs.url.value;
+
+      if (!title.trim() || !description.trim() || !url.trim()) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
       this.addResource(title, description, url);
     },
   },
