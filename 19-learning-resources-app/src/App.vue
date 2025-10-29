@@ -1,20 +1,14 @@
 <template>
-  <ul>
-    <list-item
-      v-for="resource in resources"
-      :key="resource.id"
-      :resource="resource"
-    />
-  </ul>
+  <learning-resources-list :resources="resources" />
 </template>
 
 <script>
-import ListItem from './components/ListItem.vue';
+import LearningResourcesList from './components/LearningResourcesList.vue';
 
 export default {
   name: 'App',
   components: {
-    ListItem,
+    LearningResourcesList,
   },
   data() {
     return {
