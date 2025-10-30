@@ -75,6 +75,9 @@
       </div>
     </div>
     <div class="form-control">
+      <rating-control v-model="rating" update:modelValue="setRating" />
+    </div>
+    <div class="form-control">
       <input type="checkbox" id="agree" name="agree" v-model="agree" />
       <label for="agree">I agree to the terms and conditions</label>
     </div>
@@ -85,7 +88,11 @@
 </template>
 
 <script>
+import RatingControl from './RatinControl.vue';
 export default {
+  components: {
+    RatingControl,
+  },
   data() {
     return {
       userName: '',
@@ -95,13 +102,24 @@ export default {
       how: null,
       agree: false,
       userNameValidity: 'pending',
+      rating: null,
     };
   },
   methods: {
     submitForm() {
       this.validateInput();
-      console.log(this.userName, this.age, this.referrer, this.agree);
+      console.log(
+        this.userName,
+        this.age,
+        this.referrer,
+        this.agree,
+        this.rating
+      );
       this.userName = '';
+      this.rating = null;
+    },
+    setRating(value) {
+      this.rating = value;
     },
     validateInput() {
       if (this.userName.length === 0) {
