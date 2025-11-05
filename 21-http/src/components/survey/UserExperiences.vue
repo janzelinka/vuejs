@@ -7,7 +7,9 @@
           >Load Submitted Experiences</base-button
         >
       </div>
-      <ul v-if="!isLoading">
+      <div v-if="isLoading">Loading...</div>
+      <div v-else-if="!isLoading && results?.length === 0">No data :(</div>
+      <ul v-else-if="!isLoading && results?.length > 0">
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -15,7 +17,6 @@
           :rating="result.rating"
         ></survey-result>
       </ul>
-      <div v-if="isLoading">Loading...</div>
     </base-card>
   </section>
 </template>
