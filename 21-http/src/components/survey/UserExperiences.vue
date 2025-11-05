@@ -3,7 +3,9 @@
     <base-card>
       <h2>Submitted Experiences</h2>
       <div>
-        <base-button>Load Submitted Experiences</base-button>
+        <base-button @click="fetchSurveyResults()"
+          >Load Submitted Experiences</base-button
+        >
       </div>
       <ul>
         <survey-result
@@ -21,9 +23,41 @@
 import SurveyResult from './SurveyResult.vue';
 
 export default {
-  props: ['results'],
   components: {
     SurveyResult,
+  },
+  data() {
+    return {
+      results: [],
+    };
+  },
+  mounted() {
+    this.fetchSurveyResults();
+  },
+  methods: {
+    async fetchSurveyResults() {
+      try {
+        const response = await fetch(
+          'https://zelovue-default-rtdb.firebaseio.com/surveys.json'
+        );
+        const data = await response.json();
+
+        const surveyResults = [];
+
+        for (const key in data) {
+          const resultObj = {
+            id: key,
+            name: data[key].name,
+            rating: data[key].rating,
+          };
+          surveyResults.push(resultObj);
+        }
+
+        this.results = surveyResults;
+      } catch (error) {
+        console.error('Error fetching survey results:', error);
+      }
+    },
   },
 };
 </script>
