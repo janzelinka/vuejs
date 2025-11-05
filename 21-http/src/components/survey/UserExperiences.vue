@@ -7,7 +7,7 @@
           >Load Submitted Experiences</base-button
         >
       </div>
-      <ul>
+      <ul v-if="!isLoading">
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -15,6 +15,7 @@
           :rating="result.rating"
         ></survey-result>
       </ul>
+      <div v-if="isLoading">Loading...</div>
     </base-card>
   </section>
 </template>
@@ -29,6 +30,7 @@ export default {
   data() {
     return {
       results: [],
+      isLoading: false,
     };
   },
   mounted() {
@@ -36,6 +38,7 @@ export default {
   },
   methods: {
     async fetchSurveyResults() {
+      this.isLoading = true;
       try {
         const response = await fetch(
           'https://zelovue-default-rtdb.firebaseio.com/surveys.json'
@@ -43,7 +46,7 @@ export default {
         const data = await response.json();
 
         const surveyResults = [];
-
+        this.isLoading = false;
         for (const key in data) {
           const resultObj = {
             id: key,
