@@ -44,7 +44,7 @@ export default {
       this.isLoading = true;
       try {
         const response = await fetch(
-          'https://zelovue-default-rtdb.firebaseio.com/surveys'
+          'https://zelovue-default-rtdb.firebaseio.com/surveys.json'
         );
         const data = await response.json();
 
