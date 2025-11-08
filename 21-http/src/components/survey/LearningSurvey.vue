@@ -41,6 +41,7 @@
         <p v-if="invalidInput">
           One or more input fields are invalid. Please check your provided data.
         </p>
+        <p v-if="error">{{ error }}</p>
         <div>
           <base-button>Submit</base-button>
         </div>
@@ -56,6 +57,7 @@ export default {
       enteredName: '',
       chosenRating: null,
       invalidInput: false,
+      error: '',
     };
   },
   // emits: ['survey-submit'],
@@ -71,17 +73,27 @@ export default {
       //   userName: this.enteredName,
       //   rating: this.chosenRating,
       // });
-
-      fetch('https://zelovue-default-rtdb.firebaseio.com/surveys.json', {
+      this.error = '';
+      fetch('https://zelovue-default-rtdb.firebaseio.com/surveys', {
         method: 'POST',
-        body: JSON.stringify({
+        body: {
           userName: this.enteredName,
           rating: this.chosenRating,
-        }),
+        },
         headers: {
           'Content-Type': 'application/json',
         },
-      });
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to submit survey.');
+          }
+          return response.json();
+        })
+        .catch((err) => {
+          console.log(err);
+          this.error = 'Something went wrong!';
+        });
 
       this.enteredName = '';
       this.chosenRating = null;
