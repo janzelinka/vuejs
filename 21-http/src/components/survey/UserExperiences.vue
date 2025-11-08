@@ -8,6 +8,7 @@
         >
       </div>
       <div v-if="isLoading">Loading...</div>
+      <div v-else-if="!isLoading && error">{{ this.error }}</div>
       <div v-else-if="!isLoading && results?.length === 0">No data :(</div>
       <ul v-else-if="!isLoading && results?.length > 0">
         <survey-result
@@ -32,6 +33,7 @@ export default {
     return {
       results: [],
       isLoading: false,
+      error: '',
     };
   },
   mounted() {
@@ -42,7 +44,7 @@ export default {
       this.isLoading = true;
       try {
         const response = await fetch(
-          'https://zelovue-default-rtdb.firebaseio.com/surveys.json'
+          'https://zelovue-default-rtdb.firebaseio.com/surveys'
         );
         const data = await response.json();
 
@@ -59,7 +61,9 @@ export default {
 
         this.results = surveyResults;
       } catch (error) {
+        this.isLoading = false;
         console.error('Error fetching survey results:', error);
+        this.error = error;
       }
     },
   },
