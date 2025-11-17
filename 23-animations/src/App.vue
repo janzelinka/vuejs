@@ -4,7 +4,7 @@
     <button @click="animateBlock">Animate</button>
   </div>
   <div class="container">
-    <transition>
+    <transition name="para">
       <p v-if="paraIsVisible">Test</p>
     </transition>
     <button @click="toggleParagraph">Toggle paragraph</button>
@@ -97,7 +97,7 @@ button:active {
   transform: translateY(-30px);
 } */
 
-.v-enter-active {
+.para-enter-active {
   animation: slide-fade 0.3s ease-in;
 }
 /* 
@@ -111,7 +111,7 @@ button:active {
   transform: translateY(0);
 } */
 
-.v-leave-active {
+.para-leave-active {
   animation: slide-fade 0.3s ease-out;
 }
 
