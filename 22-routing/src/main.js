@@ -33,6 +33,14 @@ const router = createRouter({
 
     { path: '/:notFound(.*)', redirect: { path: 'teams' } },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition;
+    else
+      return {
+        top: 0,
+        left: 0,
+      };
+  },
 });
 
 const app = createApp(App);
