@@ -13,7 +13,7 @@ const router = createRouter({
     // this should be put above dynamic data else it will never match, because
     // dynamic data matches also /new
     // { path: '/teams/new', component: TeamsList },
-    { path: '/teams/:teamId', component: TeamMembers },
+    { path: '/teams/:teamId', component: TeamMembers, props: true },
   ],
 });
 
