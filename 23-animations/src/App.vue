@@ -12,6 +12,8 @@
       @after-enter="afterEnter"
       @leave="leave"
       @after-leave="afterLeave"
+      @enter-cancelled="enterCancelled"
+      @leave-cancelled="leaveCancelled"
     >
       <p v-if="paraIsVisible">Test</p>
     </transition>
@@ -40,16 +42,18 @@ export default {
       dialogIsVisible: false,
       paraIsVisible: false,
       usersAreVisible: false,
+      enterInterval: null,
+      leaveInterval: null,
     };
   },
   methods: {
     leave(el, done) {
       let round = 1;
-      const interval = setInterval(() => {
+      this.leaveInterval = setInterval(() => {
         el.style.opacity = 1 - round * 0.01;
         round++;
         if (round > 100) {
-          clearInterval(interval);
+          clearInterval(this.leaveInterval);
           done();
         }
       }, 20);
@@ -60,11 +64,11 @@ export default {
     enter(el, done) {
       console.log('enter');
       let round = 1;
-      const interval = setInterval(() => {
+      this.enterInterval = setInterval(() => {
         el.style.opacity = round * 0.01;
         round++;
         if (round > 100) {
-          clearInterval(interval);
+          clearInterval(this.enterInterval);
           done();
         }
       }, 20);
@@ -95,6 +99,12 @@ export default {
     },
     hideUsers() {
       this.usersAreVisible = false;
+    },
+    enterCancelled() {
+      window.clearInterval(this.enterInterval);
+    },
+    leaveCancelled() {
+      window.clearInterval(this.leaveInterval);
     },
   },
 };
