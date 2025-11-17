@@ -29,8 +29,8 @@ export default {
     };
   },
   watch: {
-    $route(newValue) {
-      this.loadTeamMembers(newValue.params.teamId);
+    teamId(newValue) {
+      this.loadTeamMembers(newValue);
     },
   },
   created() {
