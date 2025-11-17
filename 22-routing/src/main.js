@@ -8,12 +8,24 @@ import TeamMembers from './components/teams/TeamMembers.vue';
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/teams', component: TeamsList, alias: '/' },
+    {
+      name: 'teams',
+      path: '/teams',
+      component: TeamsList,
+      children: [
+        {
+          name: 'team-members',
+          path: ':teamId',
+          component: TeamMembers,
+          props: true,
+        },
+      ],
+    },
     { path: '/users', component: UsersList },
     // this should be put above dynamic data else it will never match, because
     // dynamic data matches also /new
     // { path: '/teams/new', component: TeamsList },
-    { path: '/teams/:teamId', component: TeamMembers, props: true },
+
     { path: '/:notFound(.*)', redirect: { path: 'teams' } },
   ],
 });

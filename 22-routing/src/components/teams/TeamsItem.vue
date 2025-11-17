@@ -10,6 +10,16 @@
 <script>
 export default {
   props: ['name', 'memberCount', 'id'],
+  computed: {
+    teamMembersLink() {
+      return {
+        name: 'team-members',
+        params: {
+          teamId: this.id,
+        },
+      };
+    },
+  },
 };
 </script>
 
