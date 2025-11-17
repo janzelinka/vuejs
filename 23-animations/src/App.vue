@@ -4,7 +4,15 @@
     <button @click="animateBlock">Animate</button>
   </div>
   <div class="container">
-    <transition name="para">
+    <transition
+      name="para"
+      @before-enter="beforeEnter"
+      @before-leave="beforeLeave"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @leave="leave"
+      @after-leave="afterLeave"
+    >
       <p v-if="paraIsVisible">Test</p>
     </transition>
     <button @click="toggleParagraph">Toggle paragraph</button>
@@ -35,6 +43,24 @@ export default {
     };
   },
   methods: {
+    leave() {
+      console.log('leave');
+    },
+    afterLeave() {
+      console.log('afterLeave');
+    },
+    enter() {
+      console.log('enter');
+    },
+    afterEnter() {
+      console.log('after enter');
+    },
+    beforeEnter(element) {
+      console.log(element);
+    },
+    beforeLeave(element) {
+      console.log(element);
+    },
     toggleParagraph() {
       this.paraIsVisible = !this.paraIsVisible;
     },
