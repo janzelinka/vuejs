@@ -8,6 +8,7 @@
       :role="user.role"
     ></user-item>
   </ul>
+  <router-view name="footer"></router-view>
 </template>
 
 <script>
