@@ -43,20 +43,37 @@ export default {
     };
   },
   methods: {
-    leave() {
-      console.log('leave');
+    leave(el, done) {
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.opacity = 1 - round * 0.01;
+        round++;
+        if (round > 100) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
     },
     afterLeave() {
       console.log('afterLeave');
     },
-    enter() {
+    enter(el, done) {
       console.log('enter');
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.opacity = round * 0.01;
+        round++;
+        if (round > 100) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
     },
     afterEnter() {
       console.log('after enter');
     },
     beforeEnter(element) {
-      console.log(element);
+      element.style.opacity = 0;
     },
     beforeLeave(element) {
       console.log(element);
@@ -136,9 +153,6 @@ button:active {
   transform: translateY(-30px);
 } */
 
-.para-enter-active {
-  animation: slide-fade 0.3s ease-in;
-}
 /* 
 .v-enter-to {
   opacity: 1;
@@ -149,10 +163,6 @@ button:active {
   opacity: 1;
   transform: translateY(0);
 } */
-
-.para-leave-active {
-  animation: slide-fade 0.3s ease-out;
-}
 
 /* .v-leave-to {
   opacity: 0;
