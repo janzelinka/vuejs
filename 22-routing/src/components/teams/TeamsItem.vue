@@ -3,7 +3,7 @@
     <h3>{{ name }}</h3>
     <div class="team-members">{{ memberCount }} Members</div>
     <!-- <a href="#">View Members</a> -->
-    <router-link :to="`/teams/${id}`">View Members</router-link>
+    <router-link :to="teamMembersLink">View Members</router-link>
   </li>
 </template>
 
@@ -16,6 +16,9 @@ export default {
         name: 'team-members',
         params: {
           teamId: this.id,
+        },
+        query: {
+          sort: 'asc',
         },
       };
     },
