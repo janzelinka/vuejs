@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     addUser() {
-      this.users.push(this.user);
+      this.users.unshift(this.user);
     },
     removeUser(user) {
       this.users = this.users.filter((x) => x != user);
@@ -64,5 +64,9 @@ li {
 .user-list-leave-to {
   opacity: 0;
   transform: translateX(30px);
+}
+
+.user-list-move {
+  transition: transform 0.8s ease;
 }
 </style>
