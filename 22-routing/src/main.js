@@ -26,7 +26,15 @@ const router = createRouter({
         },
       ],
     },
-    { path: '/users', components: { default: UsersList, footer: UsersFooter } },
+    {
+      path: '/users',
+      components: { default: UsersList, footer: UsersFooter },
+      beforeEnter: function (to, from, next) {
+        console.log('beforeEnter');
+        console.log(to, from, next);
+        next();
+      },
+    },
     // this should be put above dynamic data else it will never match, because
     // dynamic data matches also /new
     // { path: '/teams/new', component: TeamsList },
@@ -47,6 +55,12 @@ router.beforeEach(function (to, from, next) {
   console.log('global beforeeach');
   console.log(to, from);
   next();
+});
+
+router.afterEach(function (to, from) {
+  //sending analytics
+  console.log('global afrer each', to, from);
+  console.log(arguments);
 });
 
 const app = createApp(App);
