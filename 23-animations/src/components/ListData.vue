@@ -59,6 +59,7 @@ li {
 
 .user-list-leave-active {
   transition: all 1s ease-out;
+  position: absolute;
 }
 
 .user-list-leave-to {
