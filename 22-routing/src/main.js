@@ -14,6 +14,7 @@ const router = createRouter({
     // dynamic data matches also /new
     // { path: '/teams/new', component: TeamsList },
     { path: '/teams/:teamId', component: TeamMembers, props: true },
+    { path: '/:notFound(.*)', redirect: { path: 'teams' } },
   ],
 });
 
